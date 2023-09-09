@@ -4,13 +4,17 @@ formEl.addEventListener("submit", onSubmit);
 function onSubmit(event) {
   event.preventDefault();
 
-  const { email, password } = event.currentTarget.elements;
-
+  const formElement = event.currentTarget.elements;
+  const email = formElement.email.value;
+  const password = formElement.password.value;
   const data = {
     email: email.value,
     password: password.value,
   };
+  if (email === "" || password === "") {
+    return alert("Please fill in all the fields!");
+  }
 
-  console.log(data);
   event.currentTarget.reset();
+  console.log(data);
 }
